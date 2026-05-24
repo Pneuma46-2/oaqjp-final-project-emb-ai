@@ -12,8 +12,13 @@ def sent_analyzer():
     
     text_to_analyze = request.args.get('textToAnalyze')
     response = emotion_detector(text_to_analyze)
-    emotion = response['emotion'] 
-    return "For the given statement, the system response is {} : {}.".format(label.split('_')[1], emotion)
+    emotion = response
+    print(list(emotion.items())[:5])
+    print(emotion["dominant_emotion"])
+    print (f"For the given statement, the system response is {emotion[1]}, {emotion[2]} , {emotion[3]} , {emotion[4]}, and {emotion[5]}. The dominant emotion is {emotion[6]}")
+
+    print(emotion)
+    return "For the given statement, the system response is"
 
 
 @app.route("/")
