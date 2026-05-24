@@ -12,10 +12,16 @@ def sent_analyzer():
     
     text_to_analyze = request.args.get('textToAnalyze')
     response = emotion_detector(text_to_analyze)
-    emotion = response
-    print(list(emotion.items())[:5])
+    emotion_first_five_key = response.keys()[:4]
+    emotion_last_key = response.keys()[5]
+    emotion_dom_key = reponse.keys()[6]
+
+    emotion_first_five_value = response.values()[:4]
+    emotion_last_value = response.values()[5]
+    emotion_dom_value = reponse.values()[6]
+
     print(emotion["dominant_emotion"])
-    print (f"For the given statement, the system response is {emotion[1]}, {emotion[2]} , {emotion[3]} , {emotion[4]}, and {emotion[5]}. The dominant emotion is {emotion[6]}")
+    print ("For the given statement, the system response is {}".format(emotion))
 
     print(emotion)
     return "For the given statement, the system response is"
